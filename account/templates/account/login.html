@@ -5,26 +5,19 @@
 
 	<h1>Log in</h1>
 	{% csrf_token %}
-
-	{% for field in form %}
-	<!-- Email -->
-
-	{{ field.label_tag }}
-	{{field}}<br><br>
-
-	{% endfor %}
-
-	<!-- Email -->
-
-	<!-- Sign in button -->
-	<button type="submit">Log In Here</button>
-
+	<form method="POST">
+		{% csrf_token %}
+		{{ login_form }} <br>
+		<br>
+		<button class="btn btn-primary" type="submit">Login</button>
+	</form>
 	<!-- Register -->
 	<p>Not a member?
 		<a href="{% url 'signup' %}">Register</a>
 	</p>
-
-</form>
+	{% if messages %}
+    <ul class="messagelist">{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+    {% endif %}</form>
 <!-- Default form login -->
 
 </body>
